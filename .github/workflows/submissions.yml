@@ -1,0 +1,46 @@
+name: Strategy Submission
+
+on:
+  pull_request_target:
+    paths:
+      - submissions/*.py
+    
+
+jobs:
+
+  update-scoreboard:
+
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        repository: ${{ github.event.pull_request.head.repo.full_name }}
+
+    - name: Install Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.12"
+    
+    - name: Install Rust
+      uses: actions-rust-lang/setup-rust-toolchain@v1
+    
+    - name: Evaluation
+      timeout-minutes: 5
+      id: evaluation
+      run: |
+        python test_strategy.py --author ${{ github.event.pull_request.user.login }} --catch-errors --summary $GITHUB_STEP_SUMMARY
+        {
+          echo "evaluation_table<<EOF"
+          cat $GITHUB_STEP_SUMMARY
+          echo EOF
+        } >> "$GITHUB_OUTPUT"
+    
+    - name: Comment summary
+      uses: mshick/add-pr-comment@v2
+      with:
+        message: |
+          ${{ steps.evaluation.outputs.evaluation_table }}
