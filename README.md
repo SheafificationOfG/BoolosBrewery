@@ -5,7 +5,7 @@ Simple UI so that you can try your hand at one of the logic puzzles of all time.
 1. [The main predicament](#the-main-predicament)
 1. [Try it yourself!](#try-it-yourself)
    1. [Clarifications](#clarifications)
-1. [Variants (and other features)](#variants-and-other-features)
+   1. [Variants (and other features)](#variants-and-other-features)
 1. [Test your strategy!](#test-your-strategy)
    1. [High scores](#high-scores)
 
@@ -76,7 +76,7 @@ Nonetheless, I'll provide some clarifications:
 1. If you direct a question to the engineer, the content of your question has no bearing on the response; their response will be ["random"](https://rust-random.github.io/rand/rand/rngs/struct.ThreadRng.html).
 1. If you, e.g., ask Alice how Bob will respond to a certain question, and Bob happens to be the engineer, Alice is going to make an "educated guess" about what Bob would say (i.e, her response may be "random").
 
-# Variants (and other features)
+## Variants (and other features)
 
 If you would like to play the easier or harder [variants](docs/variants.md), just enable the corresponding feature:
 ```sh
