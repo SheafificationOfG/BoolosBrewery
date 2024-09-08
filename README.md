@@ -28,7 +28,7 @@ You see, you yourself are a computer scientist.
 During the night, your colleagues decided that it would be "fun and quirky" to only speak to you in `foo`s and `bar`s.
 You don't remember how this decision came about, as you are also pretty drunk.
 1. The mathematician made some decision on how to map `foo` and `bar` to "yes" and "no", but you don't remember what the assignment was.
-1. Whatever conventions the mathematician chose, you figure that the physicist will commit to the complete opposite convention; e.g., whenever the mathematician would say `foo`, the physicist would say `bar`.
+1. Whatever conventions the mathematician chose, you figure that the physicist will commit to the complete opposite convention; e.g., if the mathematician would say `foo` to mean "yes", then the physicist would say `bar` to mean "yes".
 1. The engineer was oddly quiet during this conversation.
    It's safe to assume that the engineer wasn't paying much attention to the conversation, since it was frivolous musing.
    Now that everyone is using `foo` and `bar`, though, the engineer is trying to catch up with the trend.

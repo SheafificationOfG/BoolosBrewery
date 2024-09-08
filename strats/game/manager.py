@@ -2,6 +2,7 @@
 Spawning and interacting with game instance
 """
 import os
+import asyncio
 import subprocess
 
 from . import types, consts
@@ -24,12 +25,12 @@ class GameInstance:
         if not cargo_is_supported():
             raise RuntimeError("Please install cargo before running!")
         
-        cargo_args = ["--release"]
+        cargo_args = ["--release", "--quiet"]
         if features is not None:
             cargo_args.extend(["--features",  "{}".format(' '.join(features))])
         
         self._handle = subprocess.Popen(["cargo", "run", *cargo_args],
-                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+                                        stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=None)
 
         self._writeln(num_questions)
 
@@ -43,6 +44,7 @@ class GameInstance:
     def _reset(self):
         self._question_counter = 0        
         self._log("Resetting...")
+        self._read_buffer = b""
 
     def __del__(self):
         if hasattr(self, "_handle"):
@@ -61,6 +63,9 @@ class GameInstance:
                 print("Game instance terminated gracefully.")
                 exit()
 
+    def _readln(self):
+        return self._handle.stdout.readline()
+
     def _log(self, line):
         if hasattr(self, "_history") and self._history is not None:
             self._history.write(f"{line}\n")
@@ -70,13 +75,14 @@ class GameInstance:
         return self._handle.poll() is None
 
     def ping(self) -> bool:
-        match self._handle.stdout.readline().strip():
+        match self._readln().strip():
             case b"begin":
                 return True
             case b"end":
                 return False
-            case other:
-                raise ValueError(f"Received unexpected ping: {other}.")
+            case _:
+                print("Subprocess pingback failed. Exiting...")
+                exit(99)
 
 
     def ask(self, question: types.Question) -> types.Response:
@@ -90,7 +96,7 @@ class GameInstance:
         self._writeln(question)
         self._log(f"You: {question}")
         
-        match self._handle.stdout.readline().strip():
+        match self._readln().strip():
             case b"Foo":
                 ret = consts.Foo
             case b"Bar":

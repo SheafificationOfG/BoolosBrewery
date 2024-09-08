@@ -343,7 +343,7 @@ impl Context {
             .collect()
     }
 
-    pub fn guess_field(&self, person: &Person, guess: String) -> Result<bool, InterpretError> {
+    pub fn guess_field(&self, person: &Person, guess: &String) -> Result<bool, InterpretError> {
         let field = self
             .field_of(person)
             .ok_or(InterpretError(format!("{} isn't here!", person)))?;

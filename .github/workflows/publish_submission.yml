@@ -30,7 +30,7 @@ jobs:
       uses: actions-rust-lang/setup-rust-toolchain@v1
     
     - name: (Re)Evaluation
-      timeout-minutes: 5
+      timeout-minutes: 10
       run: |
         python test_strategy.py --author ${{ github.event.pull_request.user.login }} --catch-errors --publish --summary $GITHUB_STEP_SUMMARY
       

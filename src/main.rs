@@ -48,10 +48,11 @@ fn main() {
         '_guess: for person in context.participants() {
             let guess = read_line(String::new()).unwrap_or_else(|err| panic!("{err}"));
             if !context
-                .guess_field(&person, guess)
+                .guess_field(&person, &guess)
                 .unwrap_or_else(|err| panic!("{err}"))
             {
-                let mut message = String::from("Incorrect guesses!\n");
+                let mut message =
+                    format!("The guess that {person} studies {guess} is incorrect!\n");
                 message += &format!("Log:\n{}\n", context.log());
                 for p in context.participants() {
                     message += &format!("{} studies {}!\n", &p, context.field_of(&p).unwrap());
@@ -112,7 +113,7 @@ fn main() {
                 println!("{}", "or not...".italic().red());
                 return;
             };
-            match context.guess_field(&person, guess) {
+            match context.guess_field(&person, &guess) {
                 Ok(is_correct) => {
                     all_correct &= is_correct;
                     break 'guess;

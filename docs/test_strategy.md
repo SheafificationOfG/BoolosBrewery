@@ -203,6 +203,14 @@ python3 test_strategy.py --file path/to/your/strategy.py
 ```
 from the root directory of the repo.
 
+## Troubleshooting
+
+If your strategy is failing, Python's detailed error messages or the game's log info should hopefully help you patch things up.
+If this doesn't seem like enough information, you can also dump the strategy's interaction history with the various iterations of the game by setting the `STRAT_LOG` file:
+```sh
+STRAT_LOG=path/to/dump/file.dump python3 test_strategy.py --file path/to/your/strategy.py
+```
+
 
 # Submitting your strategy
 
