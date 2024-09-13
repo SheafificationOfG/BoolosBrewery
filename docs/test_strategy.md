@@ -203,6 +203,14 @@ python3 test_strategy.py --file path/to/your/strategy.py
 ```
 from the root directory of the repo.
 
+> [!NOTE]
+> If the process seems to hang (and you're sure your solution isn't to blame), it might be because of how subprocess IO pipes are buffering (surely it's not a deadlock!).
+> You may find success running
+> ```sh
+> stdbuf -oL python3 test_strategy --file path/to/your/strategy.py
+> ```
+> instead.
+
 ## Troubleshooting
 
 If your strategy is failing, Python's detailed error messages or the game's log info should hopefully help you patch things up.

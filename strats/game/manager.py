@@ -9,7 +9,7 @@ from . import types, consts
 
 def cargo_is_supported():
     try:
-        return subprocess.run(["cargo", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
+        return subprocess.run(["cargo", "--version"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, universal_newlines=True).returncode == 0
     except FileNotFoundError:
         return False
 
@@ -47,7 +47,7 @@ class GameInstance:
         self._read_buffer = b""
 
     def __del__(self):
-        if hasattr(self, "_handle"):
+        if hasattr(self, "_handle") and self._handle.poll() is None:
             self._handle.terminate()
         if hasattr(self, "_history") and self._history is not None:
             self._history.close()

@@ -32,7 +32,10 @@ jobs:
       timeout-minutes: 10
       id: evaluation
       run: |
-        python test_strategy.py --author ${{ github.event.pull_request.user.login }} --catch-errors --summary $GITHUB_STEP_SUMMARY
+        stdbuf -oL \
+        python test_strategy.py \
+        --author ${{ github.event.pull_request.user.login }} \
+        --catch-errors --publish --summary $GITHUB_STEP_SUMMARY \
         {
           echo "evaluation_table<<EOF"
           cat $GITHUB_STEP_SUMMARY
