@@ -1,5 +1,12 @@
 {
-  "easy": {},
+  "easy": {
+    "submissions\\public\\easy\\2024-09-17.22-45-18.submit_easy.py": {
+      "author": "rocket3989",
+      "accepted_on": "2024-09-17.22-45-18",
+      "question_limit": 1,
+      "question_avg": 1.0
+    }
+  },
   "default": {},
   "hard": {}
 }
