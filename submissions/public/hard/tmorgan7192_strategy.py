@@ -35,8 +35,6 @@ class Strategy(Hard):
         We will implement our strategy logic in this function!
 
         """
-        print()
-
         people = [Alice, Bob, Charlie, Dan]
         subjects = [Math, Engg, Phys, Phil]
         responses = []
