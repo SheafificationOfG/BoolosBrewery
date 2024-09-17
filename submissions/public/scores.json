@@ -15,5 +15,12 @@
       "question_avg": 3.0
     }
   },
-  "hard": {}
+  "hard": {
+    "submissions\\public\\hard\\2024-09-17.23-06-05.tmorgan7192_strategy.py": {
+      "author": "tmorgan7192",
+      "accepted_on": "2024-09-17.23-06-05",
+      "question_limit": 7,
+      "question_avg": 7.0
+    }
+  }
 }
