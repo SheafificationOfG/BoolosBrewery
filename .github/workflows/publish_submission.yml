@@ -38,9 +38,10 @@ jobs:
         --catch-errors --publish --summary $GITHUB_STEP_SUMMARY
       
     - name: Commit updates
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add --all
-        git commit -m "Publishing ${{ github.event.pull_request.user.login }}'s solution."
-        git push
+      uses: EndBug/add-and-commit@v9
+      with:
+        add: "--all"
+        author_name: GitHub Action
+        author_email: action@github.com
+        message: "Publishing ${{ github.event.pull_request.user.login }}'s solution."
+        push: true
