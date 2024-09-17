@@ -115,4 +115,4 @@ If you think you have worked out a solution to this puzzle or its variants:
 ## High scores
 - :trophy: [Easy mode high scores](submissions/public/easy/README.md)
 - :trophy: [Default mode high scores](submissions/public/default/README.md)
-- :trophy: [Hard mode high scores](submissions/public/default/README.md)
+- :trophy: [Hard mode high scores](submissions/public/hard/README.md)
