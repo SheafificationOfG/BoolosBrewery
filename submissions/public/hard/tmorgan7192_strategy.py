@@ -122,7 +122,7 @@ class Strategy(Hard):
 
         missing_subject = list(filter(lambda x: x not in map(lambda y: y[1], guesses), subjects))[0]
 
-        game.guess[people[missing_index]] == missing_subject
+        game.guess[people[missing_index]] = missing_subject
         guesses.append((missing_index, missing_subject))
 
         for (person_index, subject) in guesses:
