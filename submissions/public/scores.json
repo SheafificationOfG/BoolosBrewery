@@ -7,6 +7,13 @@
       "question_avg": 1.0
     }
   },
-  "default": {},
+  "default": {
+    "submissions\\public\\default\\2024-09-17.22-59-29.vzsky.py": {
+      "author": "vzsky",
+      "accepted_on": "2024-09-17.22-59-29",
+      "question_limit": 3,
+      "question_avg": 3.0
+    }
+  },
   "hard": {}
 }
