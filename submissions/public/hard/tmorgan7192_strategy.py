@@ -83,8 +83,6 @@ class Strategy(Hard):
             if maybe == responses[not_engg_indexes[1]]:
                 game.guess[people[not_engg_indexes[1]]] = Phil
                 guesses.append((not_engg_indexes[1], Phil))
-
-        print("yes_or_no: [" + yes_or_no[0]._name + ", " + yes_or_no[1]._name + "], maybe: " + maybe._name)
         
         math_or_phys_person = people[math_or_phys_person_index]
         math_or_phys_response = responses[math_or_phys_person_index]
@@ -124,8 +122,3 @@ class Strategy(Hard):
 
         game.guess[people[missing_index]] = missing_subject
         guesses.append((missing_index, missing_subject))
-
-        for (person_index, subject) in guesses:
-            print("My guess: " + people[person_index]._name + ", " + subject._name)
-
-        print()
