@@ -1,40 +1,9 @@
 from strats import *
 
 class Strategy(Hard):
-
-    """
-
-    Your strategy *must* be implemented in a class called "Strategy".
-
-    The target puzzle variant is specified by deriving from "Easy" (as shown above), "Default", or "Hard".
-
-    """
-
- 
-
     question_limit = 7
 
-    """
-
-    Your strategy *must* specify an upper bound for how many questions it will ask.
-
-    You will automatically fail if you ask more questions than the limit you specify.
-
-    However, you may ask fewer questions than your allocated limit.
-
-    Our strategy uses exactly four questinos in all cases.
-
-    """
-
- 
-
     def solve(game):
-
-        """
-
-        We will implement our strategy logic in this function!
-
-        """
         people = [Alice, Bob, Charlie, Dan]
         subjects = [Math, Engg, Phys, Phil]
         responses = []
