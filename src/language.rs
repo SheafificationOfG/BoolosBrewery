@@ -21,6 +21,11 @@ pub enum Person {
     Bob,
     Charlie,
     Dan,
+
+    Mathematician,
+    Physicist,
+    Engineer,
+    Philosopher,
 }
 
 #[derive(Debug, PartialEq, Eq)]
@@ -97,6 +102,11 @@ impl Syntax for Question {
             ParseError::new(src, index, "Questions must be directed to someone.")
                 .following(parse_error)
         })?;
+
+        if context.you.is_none() && matches!(person, Person::Mathematician | Person::Physicist | Person::Engineer | Person::Philosopher) {
+            return Err(ParseError::new(src, index, &format!("You don't know who the {} is!", person)));
+        }
+
         let context = Self::Context { you: Some(person) };
 
         let index = parsing::next_graphic_char(src, index)
@@ -179,6 +189,15 @@ impl Syntax for Person {
             'B' | 'b' => Bob.match_aliases(src, index),
             'C' | 'c' => Charlie.match_aliases(src, index),
             'D' | 'd' => Dan.match_aliases(src, index),
+
+            'M' | 'm' => Mathematician.match_aliases(src, index),
+            'P' | 'p' => Physicist.match_aliases(src, index).or_else(|phys_error| {
+                Philosopher
+                    .match_aliases(src, index)
+                    .or_else(|phil_error| phil_error.following(phys_error).throw())
+            }),
+            'E' | 'e' => Engineer.match_aliases(src, index),
+
             'U' | 'u' if parsing::end_of_token(src, index + 1) => you(index, index + 1),
             'Y' | 'y' => {
                 let end_index = parsing::full_match_any(src, index, ["You", "you"])
@@ -838,6 +857,11 @@ impl Aliases for Person {
             Bob => &["Bob", "bob", "B", "b"],
             Charlie => &["Charlie", "charlie", "C", "c"],
             Dan => &["Dan", "dan", "D", "d"],
+
+            Mathematician => &["Mathematician", "mathematician", "Math", "math"],
+            Physicist => &["Physicist", "physicist", "Phys", "phys"],
+            Engineer => &["Engineer", "engineer", "Engg", "engg"],
+            Philosopher => &["Philosopher", "philosopher", "Phil", "phil"],
         }
     }
 }

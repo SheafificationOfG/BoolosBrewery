@@ -305,12 +305,17 @@ impl Context {
 
     pub fn field_of(&self, person: &Person) -> Option<&Field> {
         use Person::*;
-        self.field_assignment.get(match person {
-            Alice => 0,
-            Bob => 1,
-            Charlie => 2,
-            Dan => 3,
-        })
+        match person {
+            Alice => self.field_assignment.get(0),
+            Bob => self.field_assignment.get(1),
+            Charlie => self.field_assignment.get(2),
+            Dan => self.field_assignment.get(3),
+
+            Mathematician => Some(&Field::Mathematics),
+            Physicist => Some(&Field::Physics),
+            Engineer => Some(&Field::Engineering),
+            Philosopher => Some(&Field::Philosophy),
+        }
     }
 
     pub fn ask(&mut self, src: String) -> Result<(), InterpretError> {

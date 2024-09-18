@@ -43,6 +43,11 @@ The grammar is as follows:
 ||;||
 
 
+You can also ask counterfactuals referencing people by profession (thanks to [@ITR13](https://github.com/ITR13)):
+```yaml
+Alice: "Mathematician: True?" is foo?
+```
+
 ### Syntax sugar
 `You` or `U` can be used to refer to the person being asked the (inner-most) question.
 ```yaml

@@ -1,5 +1,38 @@
 {
-  "easy": {},
-  "default": {},
-  "hard": {}
+  "easy": {
+    "submissions/public/easy/2024-09-17.22-45-18.submit_easy.py": {
+      "author": "rocket3989",
+      "accepted_on": "2024-09-17.22-45-18",
+      "question_limit": 1,
+      "question_avg": 1.0
+    },
+    "submissions/public/easy/2024-09-18.00-11-59.itr.py": {
+      "author": "ITR13",
+      "accepted_on": "2024-09-18.00-11-59",
+      "question_limit": 1,
+      "question_avg": 1.0
+    }
+  },
+  "default": {
+    "submissions/public/default/2024-09-17.22-59-29.vzsky.py": {
+      "author": "vzsky",
+      "accepted_on": "2024-09-17.22-59-29",
+      "question_limit": 3,
+      "question_avg": 3.0
+    }
+  },
+  "hard": {
+    "submissions/public/hard/2024-09-17.23-06-05.tmorgan7192_strategy.py": {
+      "author": "tmorgan7192",
+      "accepted_on": "2024-09-17.23-06-05",
+      "question_limit": 7,
+      "question_avg": 7.0
+    },
+    "submissions/public/hard/2024-09-18.14-24-47.bryker_strategy.py": {
+      "author": "bryker",
+      "accepted_on": "2024-09-18.14-24-47",
+      "question_limit": 6,
+      "question_avg": 6.0
+    }
+  }
 }

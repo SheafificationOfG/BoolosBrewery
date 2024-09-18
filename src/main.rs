@@ -70,9 +70,17 @@ fn main() {
 
 #[cfg(not(feature = "test-strategy"))]
 fn main() {
+    use rustyline::error::ReadlineError;
+
     let mut context = game::Context::new();
     context.hello();
-
+    let mut line_reader = match rustyline::DefaultEditor::new() {
+        Ok(reader) => reader,
+        Err(err) => {
+            eprintln!("Unable to initialize line reader! {err}");
+            return;
+        }
+    };
     let mut i = 0;
     'main: loop {
         if i >= game::NUM_QUESTIONS {
@@ -85,9 +93,19 @@ fn main() {
                 break 'main;
             }
         }
-        let Ok(question) = read_line(format!("Question {}:", i + 1).dimmed().to_string()) else {
-            println!("{}", "quit".bold().white().on_red());
-            return;
+        let question = match line_reader.readline(&format!("Question {}: ", i + 1).dimmed()) {
+            Ok(question) => {
+                line_reader.add_history_entry(question.as_str()).unwrap();
+                question.trim().to_string()
+            }
+            Err(ReadlineError::Interrupted) | Err(ReadlineError::Eof) => {
+                return;
+            }
+            Err(err) => {
+                eprintln!("Error reading line: {err}");
+                println!("{}", "quit".bold().white().on_red());
+                return;
+            }
         };
         match question.to_lowercase().as_str() {
             "done" => break 'main,
