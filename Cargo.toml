@@ -7,6 +7,7 @@ edition = "2021"
 rand = { version = "0.8.5" }
 colored = { version = "2.1.0" }
 itertools = { version = "0.13.0", optional = true }
+rustyline = { version = "14.0.0", default-features = false }
 
 [features]
 # de-randomise field assignments and word assignments (for testing)
