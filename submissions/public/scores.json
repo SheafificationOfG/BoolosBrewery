@@ -33,6 +33,12 @@
       "accepted_on": "2024-09-18.14-24-47",
       "question_limit": 6,
       "question_avg": 6.0
+    },
+    "submissions/public/hard/2024-09-18.22-30-32.submit_hard.py": {
+      "author": "rocket3989",
+      "accepted_on": "2024-09-18.22-30-32",
+      "question_limit": 10,
+      "question_avg": 6.210016835016835
     }
   }
 }
