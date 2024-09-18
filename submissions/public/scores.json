@@ -39,6 +39,12 @@
       "accepted_on": "2024-09-18.22-30-32",
       "question_limit": 10,
       "question_avg": 6.210016835016835
+    },
+    "submissions/public/hard/2024-09-18.22-32-40.hard_strat_bryker_optimised.py": {
+      "author": "Rrst1",
+      "accepted_on": "2024-09-18.22-32-40",
+      "question_limit": 6,
+      "question_avg": 5.5
     }
   }
 }
