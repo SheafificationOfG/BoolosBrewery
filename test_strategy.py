@@ -74,17 +74,23 @@ def update_scoreboard(difficulty: str, json: dict):
             
             place = f"{index+1}." if index > 0 else ":trophy:"
             author = sanitise(table[submission][AUTHOR])
-            name = "`{}`".format(os.path.splitext(os.path.split(submission)[1])[0])
+            name = "`{}`".format(os.path.splitext(os.path.split(submission)[1])[0].split('.', 2)[-1])
             if index < 3:
                 author = f"**{author}**"
             score = f"{table[submission][Q_AVG]:.5f}"
-            date = table[submission][ACCEPTED]
-            source = f"`{submission}`"
+            date = table[submission][ACCEPTED].split('.', 1)[0]
+            fname = os.path.relpath(submission, os.path.join(PUBLIC_FOLDER, difficulty))
+            source = f"`{fname}`"
 
             file.write(f"| {place} | {name} | {author} | {score} | {date} | {source} |\n")
 
+def refresh_scoreboards():
+    with open(SCORE_JSON, 'r') as score_json:
+        scores = json.load(score_json)
+    for difficulty in ["easy", "default", "hard"]:
+        update_scoreboard(difficulty, scores)
 
-if __name__ == "__main__":
+if __name__ == "__main__" and not sys.flags.interactive:
 
     parser = argparse.ArgumentParser(description="Automated strategy test and publish.")
     parser.add_argument("--author", type=str, metavar="NAME", dest="author",
