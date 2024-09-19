@@ -234,3 +234,19 @@ Before making a pull request, please ensure the following:
 
 > [!IMPORTANT]
 > This is a public repo, and solutions are open-source, so please be mindful of your choice of words, file names, variable names, etc.
+
+## Scoring criteria
+
+Submissions are sorted first by the **average number of questions** required to solve the puzzle, where the average runs over all possible scenarios.
+
+For submissions that solve the puzzle in the same average number of questions, they are then sorted based on **minimal "complexity"**.
+What is complexity?
+Well, it roughly corresponds to the size of the [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of your solution.
+In simpler terms, this measures the "size" of the program, but is more refined than basing size on "number of lines" or "file size"; in particular, you are **not** punished for comments, large variable names, etc.
+
+> The purpose of the "complexity" metric is to encourage more submissions, even if you can't beat the current best strictly in terms of number of questions.
+> If you think you have a slicker way of implementing an existing strategy, this is also fair game!
+>
+> Note also that this criterion was whipped together, so may be **subject to change** (depending on if people find ways to abuse the current metric; it isn't very well-thought-out).
+
+If, somehow, submissions tie both on the average number of questions *and* the complexity score, then submissions are sorted by acceptance date.

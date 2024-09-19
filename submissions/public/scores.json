@@ -1,50 +1,57 @@
 {
   "easy": {
-    "submissions/public/easy/2024-09-17.22-45-18.submit_easy.py": {
+    "submissions/public/easy/20240917_224518_submit_easy.py": {
       "author": "rocket3989",
-      "accepted_on": "2024-09-17.22-45-18",
+      "accepted_on": "20240917_224518",
       "question_limit": 1,
-      "question_avg": 1.0
+      "question_avg": 1.0,
+      "complexity": 61
     },
-    "submissions/public/easy/2024-09-18.00-11-59.itr.py": {
+    "submissions/public/easy/20240918_001159_itr.py": {
       "author": "ITR13",
-      "accepted_on": "2024-09-18.00-11-59",
+      "accepted_on": "20240918_001159",
       "question_limit": 1,
-      "question_avg": 1.0
+      "question_avg": 1.0,
+      "complexity": 52
     }
   },
   "default": {
-    "submissions/public/default/2024-09-17.22-59-29.vzsky.py": {
+    "submissions/public/default/20240917_225929_vzsky.py": {
       "author": "vzsky",
-      "accepted_on": "2024-09-17.22-59-29",
+      "accepted_on": "20240917_225929",
       "question_limit": 3,
-      "question_avg": 3.0
+      "question_avg": 3.0,
+      "complexity": 106
     }
   },
   "hard": {
-    "submissions/public/hard/2024-09-17.23-06-05.tmorgan7192_strategy.py": {
+    "submissions/public/hard/20240917_230605_tmorgan7192_strategy.py": {
       "author": "tmorgan7192",
-      "accepted_on": "2024-09-17.23-06-05",
+      "accepted_on": "20240917_230605",
       "question_limit": 7,
-      "question_avg": 7.0
+      "question_avg": 7.0,
+      "complexity": 432
     },
-    "submissions/public/hard/2024-09-18.14-24-47.bryker_strategy.py": {
+    "submissions/public/hard/20240918_142447_bryker_strategy.py": {
       "author": "bryker",
-      "accepted_on": "2024-09-18.14-24-47",
+      "accepted_on": "20240918_142447",
       "question_limit": 6,
-      "question_avg": 6.0
+      "question_avg": 6.0,
+      "complexity": 325
     },
-    "submissions/public/hard/2024-09-18.22-30-32.submit_hard.py": {
+    "submissions/public/hard/20240918_223032_submit_hard.py": {
       "author": "rocket3989",
-      "accepted_on": "2024-09-18.22-30-32",
+      "accepted_on": "20240918_223032",
       "question_limit": 10,
-      "question_avg": 6.210016835016835
+      "question_avg": 6.210016835016835,
+      "complexity": 1023
     },
-    "submissions/public/hard/2024-09-18.22-32-40.hard_strat_bryker_optimised.py": {
+    "submissions/public/hard/20240918_223240_hard_strat_bryker_optimised.py": {
       "author": "Rrst1 + bryker",
-      "accepted_on": "2024-09-18.22-32-40",
+      "accepted_on": "20240918_223240",
       "question_limit": 6,
-      "question_avg": 5.5
+      "question_avg": 5.5,
+      "complexity": 359
     }
   }
 }

@@ -1,5 +1,5 @@
 # High scores for the "default" variant
 
-| Place | Strategy | Author | Score | Date | Source |
-|:-----:|:--------:|:------:|:-----:|:----:|:------ |
-| :trophy: | `vzsky` | **vzsky** | 3.00000 | 2024-09-17 | `2024-09-17.22-59-29.vzsky.py` |
+| Place | Strategy | Author | Questions | Complexity | Source |
+|:-----:|:--------:|:------:|:---------:|:----------:|:------:|
+| :1st_place_medal: | `vzsky` | **vzsky** | 3.00000 | 106 | `20240917_225929_vzsky.py` |
