@@ -52,6 +52,13 @@
       "question_limit": 6,
       "question_avg": 5.5,
       "complexity": 359
+    },
+    "submissions/public/hard/20240919_040726_jix_sat_synthesized.py": {
+      "author": "jix",
+      "accepted_on": "20240919_040726",
+      "question_limit": 5,
+      "question_avg": 5.0,
+      "complexity": 12150
     }
   }
 }
