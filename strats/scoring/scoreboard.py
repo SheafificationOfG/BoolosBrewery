@@ -61,15 +61,17 @@ def summary(fname: str, difficulty: str, questions: float, complexity: int, comm
         return
     
     with open(fname, 'a') as file:
+        file.write("## Summary\n")
         file.write("| Difficulty | Questions | Complexity | Comments |\n")
         file.write("|:----------:|:---------:|:----------:|:--------:|\n")
-        file.write(f"| {difficulty} | {questions:.5f} | {complexity:,} | {comment} |\n")
+        file.write(f"| {difficulty} | {questions:.5f} | {complexity:,} | {comment} |\n\n")
 
 def exception(fname: str, exc: Exception):
     if fname is None:
         return
     
     with open(fname, 'a') as file:
+        file.write("## Error\n")
         file.write("| Error | Message |\n")
         file.write("|:-----:|:-------:|\n")
-        file.write(f"| {type(exc).__name__} | {exc} |\n")
+        file.write(f"| {type(exc).__name__} | {exc} |\n\n")
