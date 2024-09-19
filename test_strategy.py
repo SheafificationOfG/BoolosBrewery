@@ -55,11 +55,12 @@ def process_single_submission(file: str|None, publish=False, author=None, summar
         
         difficulty = submission.get_difficulty()
         date = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%d_%H%M%S")
-        publish_submission(difficulty, submission_file, date)
+        public = publish_submission(difficulty, submission_file, date)
 
         scores = scoring.scoreboard.load_scores()
         submission.write_to_json(
             scores,
+            path = public,
             author = author,
             accepted = date,
         )

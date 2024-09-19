@@ -42,10 +42,14 @@ class Submission:
         if (cplx := entry.get(KEYS.CPLX)) is not None:
             self._cplx: int = cplx
 
-    def write_to_json(self, json: dict, *, author=None, accepted=None, recompute_q_avg=False, recompute_cplx=False):
+    def write_to_json(self, json: dict, *, path=None, author=None, accepted=None, recompute_q_avg=False, recompute_cplx=False):
+
         table: dict[str, dict] = json.setdefault(self.get_difficulty(), {})
 
-        entry = table.setdefault(self._fullpath, {})
+        if path is None:
+            path = self._fullpath
+
+        entry = table.setdefault(path, {})
 
         if author is not None:
             entry[KEYS.AUTHOR] = author
