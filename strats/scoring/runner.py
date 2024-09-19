@@ -16,7 +16,7 @@ class Submission:
         self._fullpath = path.replace(os.path.sep, '/')
         self._strat_path, self._strat_file = os.path.split(path)
         self._strat_file, _ = os.path.splitext(self._strat_file)
-        
+
         _syspath = list(sys.path)
         sys.path.insert(0, self._strat_path)
         self._module = importlib.import_module(self._strat_file)
@@ -26,8 +26,8 @@ class Submission:
         if not hasattr(self._module, "Strategy"):
             raise AttributeError(f"{self._strat_file} must define a \"Strategy\" class.")
         
-        self._strategy: strats.Easy | strats.Default | strats.Hard = self._module.Strategy
-        if not issubclass(self._strategy, (strats.Easy, strats.Default, strats.Hard)):
+        self._strategy: strats.Easy | strats.Default | strats.Hard = self._module.Strategy()
+        if not isinstance(self._strategy, (strats.Easy, strats.Default, strats.Hard)):
             raise TypeError(f"{self._strategy.__qualname__} must derive from strats.Easy, strats.Default, or strats.Hard.")
     
     def load_from_json(self, json: dict):
