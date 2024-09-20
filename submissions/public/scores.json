@@ -73,6 +73,13 @@
       "question_limit": 5,
       "question_avg": 5.0,
       "complexity": 12150
+    },
+    "submissions/public/hard/20240920_210459_optim_hard.py": {
+      "author": "oliverweissl",
+      "accepted_on": "20240920_210459",
+      "question_limit": 6,
+      "question_avg": 5.5,
+      "complexity": 261
     }
   }
 }
