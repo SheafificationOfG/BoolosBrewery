@@ -29,6 +29,13 @@
       "question_limit": 3,
       "question_avg": 3.0,
       "complexity": 106
+    },
+    "submissions/public/default/20240920_141117_default_optim.py": {
+      "author": "oliverweissl",
+      "accepted_on": "20240920_141117",
+      "question_limit": 3,
+      "question_avg": 3.0,
+      "complexity": 98
     }
   },
   "hard": {
