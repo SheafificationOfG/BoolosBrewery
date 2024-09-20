@@ -69,6 +69,9 @@ def score_ast(node: ast.AST):
         case ast.Raise():
             return 1 + score_ast(node.exc) + score_ast(node.cause)
         case ast.Assert():
+            # asserts should be free, but not if they modify state
+            if any(isinstance(child, ast.Call) for child in ast.walk(node.test)):
+                return score_ast(node.test)
             return 0
         case ast.Delete():
             return 1 + recurse(node.targets)
