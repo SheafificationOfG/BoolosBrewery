@@ -13,6 +13,13 @@
       "question_limit": 1,
       "question_avg": 1.0,
       "complexity": 52
+    },
+    "submissions/public/easy/20240920_095918_easy_optim.py": {
+      "author": "oliverweissl",
+      "accepted_on": "20240920_095918",
+      "question_limit": 1,
+      "question_avg": 1.0,
+      "complexity": 41
     }
   },
   "default": {
