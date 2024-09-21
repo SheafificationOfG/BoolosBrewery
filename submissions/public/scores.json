@@ -94,6 +94,13 @@
       "question_limit": 5,
       "question_avg": 4.936838624338624,
       "complexity": 11753
+    },
+    "submissions/public/hard/20240921_214752_viliml_sat_synthesized.py": {
+      "author": "viliml",
+      "accepted_on": "20240921_214752",
+      "question_limit": 5,
+      "question_avg": 4.725198412698413,
+      "complexity": 39660
     }
   }
 }
