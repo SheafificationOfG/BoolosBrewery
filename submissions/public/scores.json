@@ -87,6 +87,13 @@
       "question_limit": 6,
       "question_avg": 5.5,
       "complexity": 261
+    },
+    "submissions/public/hard/20240921_154610_jix_sat_pruned.py": {
+      "author": "viliml",
+      "accepted_on": "20240921_154610",
+      "question_limit": 5,
+      "question_avg": 4.936838624338624,
+      "complexity": 11753
     }
   }
 }
