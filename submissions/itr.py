@@ -2,7 +2,6 @@ from itertools import permutations
 from strats import *
 from functools import reduce
 
-AND = lambda a, b: a.and_(b)
 XOR = lambda a, b: a.xor(b)
 PEOPLE = (Alice, Bob, Charlie, Dan)
 STUDIES = (Math, Phys, Engg, Phil)
@@ -77,9 +76,7 @@ def HELPER(offset):
     return f
 
 Helper = HELPER(0)
-Helper2 = HELPER(2)
 Helper3 = HELPER(1)
-
 
 def get_qa(who, funcs=[]):
     values = [Truthy()] + [f(who) for f in funcs]
@@ -219,7 +216,6 @@ solution = {
 
 
 PEOPLE_PERM = list(permutations(tuple(PEOPLE)))
-STUDIES_PERM = list(permutations(tuple(STUDIES)))
 class Strategy(Hard):
     question_limit = 6
 
@@ -233,17 +229,10 @@ class Strategy(Hard):
             else:
                 foo_, bar_, baz_ = Baz, Foo, Bar
 
-            if answers not in solution:
-                for p in PEOPLE:
-                    self.guess[p] = Math
-                return
-
             v = solution[answers]
             try:
-                next = answers+(self.get_response(get_qa(*v)),)
+                recurse(answers+(self.get_response(get_qa(*v)),))
             except Exception as e:
                 for p, s in zip(PEOPLE_PERM[v], STUDIES):
                     self.guess[p] = s
-                return
-            recurse(next)
         recurse(())
