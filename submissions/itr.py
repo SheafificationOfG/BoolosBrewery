@@ -239,28 +239,11 @@ class Strategy(Hard):
                 return
 
             v = solution[answers]
-            print(answers, v)
             try:
                 next = answers+(self.get_response(get_qa(*v)),)
             except Exception as e:
-                # print(e)
-                import traceback
-                # traceback.print_exc()
-                # print()
-                try:
-                    for p, s in zip(PEOPLE_PERM[v], STUDIES):
-                        print(p, s)
-                        self.guess[p] = s
-                except:
-                    print("\n\n")
-                    print(answers, v)
-                    print("\n\n")
-                    print(v)
-                    print("\n\n")
-                    traceback.print_exc()
-                    print()
-                    print("\n\n")
-                    exit()
+                for p, s in zip(PEOPLE_PERM[v], STUDIES):
+                    self.guess[p] = s
                 return
             recurse(next)
         recurse(())
