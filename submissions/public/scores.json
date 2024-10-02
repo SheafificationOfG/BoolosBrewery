@@ -43,6 +43,13 @@
       "question_limit": 3,
       "question_avg": 3.0,
       "complexity": 95
+    },
+    "submissions/public/default/20241002_035437_itr.py": {
+      "author": "ITR13",
+      "accepted_on": "20241002_035437",
+      "question_limit": 3,
+      "question_avg": 3.0,
+      "complexity": 79
     }
   },
   "hard": {
