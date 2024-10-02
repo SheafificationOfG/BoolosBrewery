@@ -1,4 +1,4 @@
-from itertools import permutations, product
+from itertools import *
 from strats import *
 from functools import reduce
 
@@ -80,8 +80,8 @@ Helper = HELPER(0)
 Helper3 = HELPER(1)
 
 def get_qa(who, funcs=[]):
-    values = [Truthy()] + [f(who) for f in funcs]
-    q = reduce(XOR, values)
+    values = [f(who) for f in funcs]
+    q = reduce(XOR, values, Truthy())
     return who.ask(q)
 
 SIXES = Sixes,
