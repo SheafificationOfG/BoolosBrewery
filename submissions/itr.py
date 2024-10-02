@@ -357,19 +357,15 @@ solution = {
                     120: 14,
 }
 
-PEOPLE_PERM = list(permutations(tuple(PEOPLE)))
+PEOPLE_PERM = list(permutations(PEOPLE))
 class Strategy(Hard):
     question_limit = 6
 
     def solve(self):
         def recurse(answers):
             global foo_, bar_, baz_
-            if len(answers) == 0 or answers[0] == Foo:
-                foo_, bar_, baz_ = Foo, Bar, Baz
-            elif answers[0] == Bar:
-                foo_, bar_, baz_ = Bar, Baz, Foo
-            else:
-                foo_, bar_, baz_ = Baz, Foo, Bar
+            WORD_OFFSET = 0 if len(answers) == 0 or answers[0] == Foo else 1 if answers[0] == Bar else 2
+            foo_, bar_, baz_ = WORDS[WORD_OFFSET:]+WORDS[:WORD_OFFSET]
 
             v = solution[KEYS.index(answers)]
             try:
