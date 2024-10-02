@@ -9,7 +9,7 @@ WORDS = (Foo,Bar,Baz)
 
 def lessthan(who, who2):
     return reduce(
-        lambda acc, sub: acc.and_(who2.studies(sub).invert()).or_(who.studies(sub)),
+        lambda acc, sub: acc.and_(~who2.studies(sub)).or_(who.studies(sub)),
         [Phys, Math],
         who.studies(Engg) # who2.studies(Engg).implies(who.studies(Engg))
     )
@@ -60,15 +60,6 @@ def Shorts(_):
 def All(_):
     return True
 
-def Tl(who):
-    return Sixes(who).and_(Shorts(who))
-
-def Tr(who):
-    return Sixes(who).implies(Wides(who))
-
-def T3(who):
-    return Sixes(who).and_(Threes(who))
-
 def HELPER(offset):
     def f(who):
         people = EXCEPT(who)
@@ -78,11 +69,6 @@ def HELPER(offset):
 
 Helper = HELPER(0)
 Helper3 = HELPER(1)
-
-def get_qa(who, funcs=[]):
-    values = [f(who) for f in funcs]
-    q = reduce(XOR, values, Truthy())
-    return who.ask(q)
 
 SIXES = Sixes,
 SIXES_ALL = Sixes,All
@@ -387,7 +373,8 @@ class Strategy(Hard):
 
             v = solution[KEYS.index(answers)]
             try:
-                recurse(answers+(self.get_response(get_qa(*v)),))
+                who, funcs = v
+                recurse(answers+(self.get_response(who.ask(reduce(XOR, [f(who) for f in funcs], Truthy()))),))
             except Exception as e:
                 for p, s in zip(PEOPLE_PERM[v], STUDIES):
                     self.guess[p] = s
