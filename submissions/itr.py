@@ -2,10 +2,7 @@ from itertools import *
 from strats import *
 from functools import reduce
 
-XOR = lambda a, b: a.xor(b)
-PEOPLE = (Alice, Bob, Charlie, Dan)
-STUDIES = (Math, Phys, Engg, Phil)
-WORDS = (Foo,Bar,Baz)
+XOR, PEOPLE, STUDIES, WORDS = lambda a, b: a.xor(b), (Alice, Bob, Charlie, Dan), (Math, Phys, Engg, Phil), (Foo,Bar,Baz)
 
 # Checks if the study of who is less than the study of who2 (check order in STUDIES above)
 def lessthan(who, who2):
@@ -75,10 +72,8 @@ def LESSTHAN(i, j):
         return lessthan(people[i], people[j])
     return f
 
-# Flips every set of three, [x,x,o,x,o,o], and every other row respectively
-Threes = LESSTHAN(0, 2)
-Twos = LESSTHAN(0, 1)
-Ones = LESSTHAN(1, 2)
+# Flips every set of three, [x,x,o,x,o,o], and every other row respectively. Helper is described above
+Threes, Twos, Ones, Helper, Helper3 = LESSTHAN(0, 2), LESSTHAN(0, 1), LESSTHAN(1, 2), HELPER(0), HELPER(1)
 
 # Flips the bottom row of each set of six
 def Bottom(who):
@@ -101,10 +96,6 @@ def Shorts(_):
 # Flips all rows
 def All(_):
     return True
-
-
-Helper = HELPER(0)
-Helper3 = HELPER(1)
 
 SIXES = Sixes,
 SIXES_ALL = Sixes,All
@@ -411,7 +402,7 @@ class Strategy(Hard):
             try:
                 who, funcs = v
                 recurse(answers+(self.get_response(who.ask(reduce(XOR, [f(who) for f in funcs], Truthy()))),))
-            except Exception as e:
+            except:
                 for p, s in zip(PEOPLE_PERM[v], STUDIES):
                     self.guess[p] = s
         recurse(())
