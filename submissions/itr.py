@@ -7,6 +7,7 @@ PEOPLE = (Alice, Bob, Charlie, Dan)
 STUDIES = (Math, Phys, Engg, Phil)
 WORDS = (Foo,Bar,Baz)
 
+# Checks if the study of who is less than the study of who2 (check order in STUDIES above)
 def lessthan(who, who2):
     return reduce(
         lambda acc, sub: acc.and_(~who2.studies(sub)).or_(who.studies(sub)),
@@ -19,19 +20,54 @@ def phil(word):
 def phys(word):
     return Mathematician.ask(False).equals(word)
 
-def force(who, word):
-    return phil(word).and_(who.studies(Engg))
-
+# This has two functions, first is make it so all of FOO,BAR,BAZ with the same philosopher word are paired up
+# So for example, the mathematician will always answer the same word no matter if the combination is FOO,BAR,BAZ or BAR,FOO,BAZ
+# The second function is make the person answer the same word no matter if they're the mathematician or philosopher.
+# So for example, if the combination is FOO,BAR,BAZ or BAR,FOO,BAZ the asked person will always answer FOO if they're math or phys
+# This is split up by phil word too, so BAZ -> FOO, FOO -> BAR, BAR -> BAZ (I don't remember the exacts)
+# Technically this should be combined with Sixes to actually have it do this, but since that appears less often we have it inverted
 def Truthy():
     return phys(baz_).xor(Mathematician.ask(True).equals(foo_).and_(phys(bar_)))
 
-def Sixes(who):
-    return who.studies(Math)
+# The rest of these are to split up the possibility space. If Alice is the person asked, the "rows" being talked about go as follows:
+# 0: Alice, Bob, Charlie, Dan
+# 1: Alice, Bob, Dan, Charlie
+# 2: Alice, Charlie, Bob, Dan
+# 3: Alice, Dan, Bob, Charlie
+# 4: Alice, Charlie, Dan, Bob
+# 5: Alice, Dan, Charlie, Bob
+# 6: Bob, Alice, Charlie, Dan
+# 7: Bob, Alice, Dan, Charlie
+# 8: Charlie, Alice, Bob, Dan
+# 9: Dan, Alice, Bob, Charlie
+# 10: Charlie, Alice, Dan, Bob
+# 11: Dan, Alice, Charlie, Bob
+# They're basically sorted by (index of asker, index of lowest named person after asked, index of next lowest name person)
+# "Flipping" is simply making a set of rows have the opposite boolean result
 
 def EXCEPT(who):
     people = list(PEOPLE)
     people.remove(who)
     return people
+
+# Tries to splits the possibility space so that:
+# - FOO -> P1 or P2 can be engineers
+# - BAR -> P2 or P3 can be engineers
+# - BAZ -> P1 or P3 can be engineers
+# The goal is to have as few possible engineers as possible in each outcome
+def HELPER(offset):
+    def f(who):
+        def force(who, word):
+            return phil(word).and_(who.studies(Engg))
+        people = EXCEPT(who)
+        people = people[offset:]+people[:offset]
+        return force(people[0], Foo).or_(force(people[1], Bar)).or_(force(people[2], Baz))
+    return f
+
+# Flips every set of 6 rows
+def Sixes(who):
+    return who.studies(Math)
+
 
 def LESSTHAN(i, j):
     def f(who):
@@ -39,33 +75,33 @@ def LESSTHAN(i, j):
         return lessthan(people[i], people[j])
     return f
 
+# Flips every set of three, [x,x,o,x,o,o], and every other row respectively
 Threes = LESSTHAN(0, 2)
 Twos = LESSTHAN(0, 1)
 Ones = LESSTHAN(1, 2)
 
+# Flips the bottom row of each set of six
 def Bottom(who):
     first, second, last = EXCEPT(who)
     return lessthan(last, second).and_(lessthan(second, first))
 
+# Flips the top row of each set of six
 def Top(who):
     first, second, last = EXCEPT(who)
     return lessthan(first, second).and_(lessthan(second, last))
 
+# Flips all results where the Philosopher doesn't say Baz
 def Wides(_):
     return ~phil(baz_)
 
+# Flips all results where the Philosopher says Foo
 def Shorts(_):
     return phil(foo_)
 
+# Flips all rows
 def All(_):
     return True
 
-def HELPER(offset):
-    def f(who):
-        people = EXCEPT(who)
-        people = people[offset:]+people[:offset]
-        return force(people[0], Foo).or_(force(people[1], Bar)).or_(force(people[2], Baz))
-    return f
 
 Helper = HELPER(0)
 Helper3 = HELPER(1)
@@ -84,11 +120,15 @@ DAN_ZERO = Dan,()
 ALICE_SIXES = Alice,SIXES
 DAN_SIXES_TWOS = Dan,SIXES_TWOS
 
+# Since writing (foo, bar, foo) etc. over and over takes a lot of tokens, we can instead use their index in the permutation table
 KEYS = [
     j
     for i in range(7)
     for j in product(WORDS, repeat=i)
 ]
+# A dict of (previous answers) -> (next question)
+# If the value is a number, then it uses the index in the permutation of people as the solution instead of asking another question
+PEOPLE_PERM = list(permutations(PEOPLE))
 solution = {
     0: (Alice,(*SIXES_WIDES,Shorts,Helper)),
         1: (Charlie,(*SIXES_WIDES,Shorts,Helper3)),
@@ -357,7 +397,6 @@ solution = {
                     120: 14,
 }
 
-PEOPLE_PERM = list(permutations(PEOPLE))
 class Strategy(Hard):
     question_limit = 6
 
@@ -368,6 +407,7 @@ class Strategy(Hard):
             foo_, bar_, baz_ = WORDS[WORD_OFFSET:]+WORDS[:WORD_OFFSET]
 
             v = solution[KEYS.index(answers)]
+            # The try-catch just checks if you can split v into who and funcs, otherwise we know it's a number
             try:
                 who, funcs = v
                 recurse(answers+(self.get_response(who.ask(reduce(XOR, [f(who) for f in funcs], Truthy()))),))
