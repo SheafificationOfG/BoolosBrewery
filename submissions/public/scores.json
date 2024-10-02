@@ -101,6 +101,13 @@
       "question_limit": 5,
       "question_avg": 4.725198412698413,
       "complexity": 39660
+    },
+    "submissions/public/hard/20241002_024613_itr.py": {
+      "author": "ITR13",
+      "accepted_on": "20241002_024613",
+      "question_limit": 6,
+      "question_avg": 5.174603174603175,
+      "complexity": 1157
     }
   }
 }
