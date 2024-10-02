@@ -14,7 +14,8 @@ class Strategy(Easy):
     # needs to ask to solve the puzzle.
     # this is very suboptimal, but is used to demonstrate functionality.
     # You can go under this number, but you can't go over!
-    # Note that this number is also used as your final score, if you pass all test cases.
+    # Note: while this value is irrelevant when it comes to submission ranking, it *does* determine submission runtime
+    # (the relationship is exponential), so try to use as small of an upper bound as possible.
     question_limit = 4
 
     def solve(game):
