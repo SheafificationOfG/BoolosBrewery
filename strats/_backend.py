@@ -49,16 +49,19 @@ class _StrategyBase:
         if (ret := self.solve()) is not None:
             raise ValueError(f"Solver should not return anything, but returned {ret}.")
         self._instance.guess(**self._guess)
-        return self._instance._question_counter
-    
+        return self._instance._question_counter, self._instance._question_complexity
+
     def test_all_cases(self):
         question_count = 0
+        question_complexity = 0
         case_count = 0
         while self._instance.is_running() and self._instance.ping():
-            question_count += self.single_case()
+            count, complexity = self.single_case()
+            question_count += count
+            question_complexity += complexity
             case_count += 1
 
-        return question_count / case_count
+        return question_count / case_count, question_complexity / case_count
 
 
 

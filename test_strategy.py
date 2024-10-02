@@ -41,13 +41,14 @@ def process_single_submission(file: str|None, publish=False, author=None, summar
     print("Question limit:", submission.get_question_limit())
 
     print("Running submission...")
-    q_avg = submission.get_question_average()
+    q_avg, qc_avg = submission.get_question_average()
     cplx = submission.get_complexity()
-    scoring.scoreboard.summary(summary, submission.get_difficulty(), q_avg, cplx, f"Question limit: {submission.get_question_limit()}")
+    scoring.scoreboard.summary(summary, submission.get_difficulty(), q_avg, cplx, qc_avg, f"Question limit: {submission.get_question_limit()}")
 
     print("Submission passed all test cases!")
     print("Average question count:", q_avg)
     print("Solution complexity:", cplx)
+    print("Average question complexity:", qc_avg)
 
     if publish:
         if author is None:

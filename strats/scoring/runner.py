@@ -35,10 +35,13 @@ class Submission:
 
         if (entry := table.get(self._fullpath)) is None:
             return
-        
+
         if (q_avg := entry.get(KEYS.Q_AVG)) is not None:
             self._q_avg: float = q_avg
-        
+
+        if (qc_avg := entry.get(KEYS.QC_AVG)) is not None:
+            self._qc_avg: float = qc_avg
+
         if (cplx := entry.get(KEYS.CPLX)) is not None:
             self._cplx: int = cplx
 
@@ -55,9 +58,9 @@ class Submission:
             entry[KEYS.AUTHOR] = author
         if accepted is not None:
             entry[KEYS.ACCEPTED] = accepted
-        
+
         entry[KEYS.Q_LIMIT] = self.get_question_limit()
-        entry[KEYS.Q_AVG] = self.get_question_average(recompute=recompute_q_avg)
+        entry[KEYS.Q_AVG], entry[KEYS.QC_AVG] = self.get_question_average(recompute=recompute_q_avg)
         entry[KEYS.CPLX] = self.get_complexity(recompute=recompute_cplx)
 
 
@@ -68,14 +71,14 @@ class Submission:
         return self._strategy.get_question_limit()
     
     def get_question_average(self, *, recompute=False) -> float:
-        if recompute or not hasattr(self, "_q_avg"):
+        if recompute or not hasattr(self, "_q_avg") or not hasattr(self, "_qc_avg"):
             print("Running strategy...")
-            self._q_avg = self._strategy.test_all_cases()
+            self._q_avg, self._qc_avg = self._strategy.test_all_cases()
 
             print("All scenarios passed!")
             print("Average number of questions needed:", self._q_avg)
 
-        return self._q_avg
+        return self._q_avg, self._qc_avg
     
     def get_complexity(self, *, recompute=False) -> int:
         if recompute or not hasattr(self, "_cplx"):

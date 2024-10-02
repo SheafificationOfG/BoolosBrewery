@@ -3,6 +3,7 @@ Spawning and interacting with game instance
 """
 import os
 import asyncio
+import re
 import subprocess
 
 from . import types, consts
@@ -42,7 +43,8 @@ class GameInstance:
             self._history = None
 
     def _reset(self):
-        self._question_counter = 0        
+        self._question_counter = 0
+        self._question_complexity = 0
         self._log("Resetting...")
         self._read_buffer = b""
 
@@ -88,14 +90,17 @@ class GameInstance:
     def ask(self, question: types.Question) -> types.Response:
         if not isinstance(question, types.Question):
             raise ValueError("You can only ask questions!")
-        
+
         if self._question_counter >= self._num_questions:
             raise AssertionError(f"You have already asked your limit of {self._num_questions} question(s)!")
-        
+
         self._question_counter += 1
+        val = len(re.findall(r"\b\S+?\b", str(question)))
+        self._question_complexity += val
+
         self._writeln(question)
         self._log(f"You: {question}")
-        
+
         match self._readln().strip():
             case b"Foo":
                 ret = consts.Foo
@@ -105,10 +110,10 @@ class GameInstance:
                 ret = consts.Baz
             case other:
                 raise ValueError(f"Received unexpected input: {other}.")
-        
+
         self._log(f"Response: {ret}")
         return ret
-    
+
     def guess(self, **guesses):
         self._writeln("done")
         self._log("Guesses:")

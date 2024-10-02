@@ -24,5 +24,6 @@ class KEYS:
     Q_LIMIT  = "question_limit"
 
     Q_AVG = "question_avg"
+    QC_AVG = "question_complexity_avg"
     CPLX = "complexity"
 

@@ -6,7 +6,7 @@ import os
 def _sortkey(table: dict[str, dict]):
     def score(strat: str):
         entry = table[strat]
-        return (entry[KEYS.Q_AVG], entry[KEYS.CPLX], entry[KEYS.ACCEPTED])
+        return (entry[KEYS.Q_AVG], entry[KEYS.CPLX], entry[KEYS.QC_AVG], entry[KEYS.ACCEPTED])
     return score
 
 def load_scores() -> dict[str, dict[str, dict]]:
@@ -33,8 +33,8 @@ def update_scoreboard(difficulty: str, json: dict):
         file.write(f"# High scores for the \"{difficulty}\" variant\n\n")
         table = json[difficulty]
 
-        file.write("| Place | Strategy | Author | Questions | Complexity | Source |\n")
-        file.write("|:-----:|:--------:|:------:|:---------:|:----------:|:------:|\n")
+        file.write("| Place | Strategy | Author | Questions | Complexity | Question Complexity | Source |\n")
+        file.write("|:-----:|:--------:|:------:|:---------:|:----------:|:-------------------:|:------:|\n")
 
         for index, submission in enumerate(sorted(table, key=_sortkey(table))):
 
@@ -51,25 +51,26 @@ def update_scoreboard(difficulty: str, json: dict):
                 author = f"**{author}**"
             questions = f"{entry[KEYS.Q_AVG]:.5f}"
             complexity = f"{entry[KEYS.CPLX]:,}"
+            question_complexity = f"{entry[KEYS.QC_AVG]:.5f}"
             fname = os.path.relpath(submission, PATH.DIFFICULTY(difficulty))
             source = f"`{fname}`"
 
-            file.write(f"| {place} | {strategy} | {author} | {questions} | {complexity} | {source} |\n")
+            file.write(f"| {place} | {strategy} | {author} | {questions} | {complexity} | {question_complexity} | {source} |\n")
 
-def summary(fname: str, difficulty: str, questions: float, complexity: int, comment: str):
+def summary(fname: str, difficulty: str, questions: float, complexity: int, question_complexity: float, comment: str):
     if fname is None:
         return
-    
+
     with open(fname, 'a') as file:
         file.write("## Summary\n")
-        file.write("| Difficulty | Questions | Complexity | Comments |\n")
-        file.write("|:----------:|:---------:|:----------:|:--------:|\n")
-        file.write(f"| {difficulty} | {questions:.5f} | {complexity:,} | {comment} |\n\n")
+        file.write("| Difficulty | Questions | Complexity | Question Complexity | Comments |\n")
+        file.write("|:----------:|:---------:|:----------:|:-------------------:|:--------:|\n")
+        file.write(f"| {difficulty} | {questions:.5f} | {complexity:,} | {question_complexity:.5f} | {comment} |\n\n")
 
 def exception(fname: str, exc: Exception):
     if fname is None:
         return
-    
+
     with open(fname, 'a') as file:
         file.write("## Error\n")
         file.write("| Error | Message |\n")
