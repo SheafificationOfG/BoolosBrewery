@@ -5,7 +5,7 @@ from strats import Foo, Bar, Baz, Default, Easy, Hard, Mathematician, Physicist,
 from math import comb as comb_number
 
 #viliml solution was too "complex" so i did this
-#We can reduce each question to ask if a list of scenarios the actual one
+#We can reduce each question to ask if some scenario out of a list of scenarios is the actual one
 #One scenario, for example, would be (A: Phys, B: Phil, C: Engg, D: Math, Math: Foo, Phys: Boo, Phil: Baz)
 #So we end up with a list of lenght <= 144 for every question. For example [0, 1] (Question is only true if this is scenario 0 or 1)
 #This list can be encoded. As every list correspond to an index of the combination of 144 integers.
@@ -13,6 +13,7 @@ from math import comb as comb_number
 #(), (0), (1), (2), ..., (143), (0, 1), ...
 
 #I also have to specify who am i asking the question. I write the index of the person after a ","
+#Then "260921280343613508858417787459715793582625,2" is asking to [Alice, Bob, Charlie, Dan][2] wich is Charlie about the list of scenarios encoded as 260921280343613508858417787459715793582625
 
 #The keys are: 1 for the initial question. Then 3*last_question_key + index_of_response for the next question/answer, where index_of_response is 0 if Foo, 1 if Bar, 2 if Baz
 #If the node is an answer then i write the index of an scenario wich order of fields is the correct answer. So if the answer is A: Math, B: Phys, C: Phil, D: Engg then the index is 0, as the scenario 0 has that order.
