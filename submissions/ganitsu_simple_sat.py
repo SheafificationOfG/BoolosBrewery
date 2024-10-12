@@ -1,4 +1,3 @@
-from z3 import And, Or, Implies, If, Solver, Optimize
 from itertools import permutations, product
 from strats import Foo, Bar, Baz, Default, Easy, Hard, Mathematician, Physicist, Engineer, Philosopher, Alice, Bob, Charlie, Dan, Expr, Math, Engg, Phys, Phil
 
