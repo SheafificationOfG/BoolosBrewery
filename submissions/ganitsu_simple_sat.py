@@ -292,8 +292,6 @@ for k, dat in data.items():
 		}
 
 
-s = Solver()
-
 cantidad_de_preguntas = 5
 
 respuestas_list = [
