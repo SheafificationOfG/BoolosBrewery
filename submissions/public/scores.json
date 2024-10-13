@@ -115,6 +115,13 @@
       "question_limit": 6,
       "question_avg": 5.174603174603175,
       "complexity": 1157
+    },
+    "submissions/public/hard/20241013_113416_ganitsu_simple_sat.py": {
+      "author": "ganitsu",
+      "accepted_on": "20241013_113416",
+      "question_limit": 5,
+      "question_avg": 4.725198412698413,
+      "complexity": 1077
     }
   }
 }
