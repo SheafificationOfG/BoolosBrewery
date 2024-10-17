@@ -17,9 +17,9 @@ def score_ast(node: ast.AST):
         case ast.Expression():
             return 1 + score_ast(node.body)
         case ast.Constant():
-            if isinstance(node.value, str):
-                return len(re.findall(r"\b\S+?\b", node.value))
-            return 1
+            if isinstance(node.value, int):
+                return len(hex(node.value)) - 2
+            return len(tuple(filter(lambda c: c != ' ', repr(node.value))))
         case ast.FormattedValue():
             return 1 + score_ast(node.value)
         case ast.JoinedStr():
