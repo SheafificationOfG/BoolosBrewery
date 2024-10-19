@@ -79,7 +79,7 @@ class Submission:
     
     def get_complexity(self, *, recompute=False) -> int:
         if recompute or not hasattr(self, "_cplx"):
-            with open(self._fullpath, encoding="utf_8") as file:
+            with open(self._fullpath) as file:
                 src = file.read()
             self._cplx = complexity_score(src)
         return self._cplx
