@@ -50,6 +50,13 @@
       "question_limit": 3,
       "question_avg": 3.0,
       "complexity": 111
+    },
+    "submissions/public/default/20241020_143248_itr_default_new_rules.py": {
+      "author": "ITR13",
+      "accepted_on": "20241020_143248",
+      "question_limit": 3,
+      "question_avg": 3.0,
+      "complexity": 81
     }
   },
   "hard": {
