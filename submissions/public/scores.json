@@ -143,6 +143,13 @@
       "question_limit": 5,
       "question_avg": 4.725198412698413,
       "complexity": 27955
+    },
+    "submissions/public/hard/20241020_144430_ganitsu_joke_simplified.py": {
+      "author": "ITR13",
+      "accepted_on": "20241020_144430",
+      "question_limit": 5,
+      "question_avg": 4.725198412698413,
+      "complexity": 15
     }
   }
 }
