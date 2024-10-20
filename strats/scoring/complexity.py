@@ -1,5 +1,6 @@
 import ast
-import re
+
+ID_CUTOFF = 64 # no reasonable name should be longer than this
 
 def score(src: str) -> int:
     return score_ast(ast.parse(src))
@@ -28,8 +29,10 @@ def score_ast(node: ast.AST):
             return 1 + recurse(node.elts)
         case ast.Dict():
             return 1 + recurse(node.keys + node.values)
-        case ast.Name() | ast.Starred():
-            return 1
+        case ast.Name():
+            return max(1, len(node.id) - ID_CUTOFF)
+        case ast.Starred():
+            return 1 + score_ast(node.value)
         case ast.Expr():
             return 1 + score_ast(node.value)
         case ast.UnaryOp():

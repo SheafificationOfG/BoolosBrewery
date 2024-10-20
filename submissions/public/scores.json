@@ -79,7 +79,7 @@
       "accepted_on": "20240918_223032",
       "question_limit": 10,
       "question_avg": 6.210016835016835,
-      "complexity": 1155
+      "complexity": 1160
     },
     "submissions/public/hard/20240918_223240_hard_strat_bryker_optimised.py": {
       "author": "Rrst1 + bryker",
@@ -121,7 +121,7 @@
       "accepted_on": "20241002_024613",
       "question_limit": 6,
       "question_avg": 5.174603174603175,
-      "complexity": 1560
+      "complexity": 1575
     },
     "submissions/public/hard/20241013_113416_ganitsu_simple_sat.py": {
       "author": "ganitsu",
@@ -149,7 +149,7 @@
       "accepted_on": "20241020_144430",
       "question_limit": 5,
       "question_avg": 4.725198412698413,
-      "complexity": 15
+      "complexity": 19749
     }
   }
 }
