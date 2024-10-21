@@ -35,13 +35,10 @@ fn main() {
     contexts.shuffle(&mut thread_rng());
     for mut context in contexts {
         println!("begin");
-        'main: for i in 0.. {
+        'main: loop {
             let question = read_line(String::new()).unwrap_or_else(|err| panic!("{err}"));
             if question.to_lowercase() == "done" {
                 break 'main;
-            }
-            if i >= question_limit {
-                panic!("You've asked too many questions!");
             }
             context.ask(question).unwrap_or_else(|err| panic!("{err}"));
         }

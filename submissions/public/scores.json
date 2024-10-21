@@ -3,28 +3,28 @@
     "submissions/public/easy/20240917_224518_submit_easy.py": {
       "author": "rocket3989",
       "accepted_on": "20240917_224518",
-      "question_limit": 1,
+      "question_limit": 0,
       "question_avg": 1.0,
       "complexity": 61
     },
     "submissions/public/easy/20240918_001159_itr.py": {
       "author": "ITR13",
       "accepted_on": "20240918_001159",
-      "question_limit": 1,
+      "question_limit": 0,
       "question_avg": 1.0,
       "complexity": 52
     },
     "submissions/public/easy/20240920_095918_easy_optim.py": {
       "author": "oliverweissl",
       "accepted_on": "20240920_095918",
-      "question_limit": 1,
+      "question_limit": 0,
       "question_avg": 1.0,
       "complexity": 41
     },
     "submissions/public/easy/20240920_210927_asserting_absurdly_minimal_complexity.py": {
       "author": "nleanba",
       "accepted_on": "20240920_210927",
-      "question_limit": 1,
+      "question_limit": 0,
       "question_avg": 1.0,
       "complexity": 53
     }
@@ -33,28 +33,28 @@
     "submissions/public/default/20240917_225929_vzsky.py": {
       "author": "vzsky",
       "accepted_on": "20240917_225929",
-      "question_limit": 3,
+      "question_limit": 1,
       "question_avg": 3.0,
       "complexity": 106
     },
     "submissions/public/default/20240920_141117_default_optim.py": {
       "author": "oliverweissl + vzsky",
       "accepted_on": "20240921_130058",
-      "question_limit": 3,
+      "question_limit": 1,
       "question_avg": 3.0,
       "complexity": 95
     },
     "submissions/public/default/20241002_035437_itr.py": {
       "author": "ITR13",
       "accepted_on": "20241002_035437",
-      "question_limit": 3,
+      "question_limit": 1,
       "question_avg": 3.0,
       "complexity": 111
     },
     "submissions/public/default/20241020_143248_itr_default_new_rules.py": {
       "author": "ITR13",
       "accepted_on": "20241020_143248",
-      "question_limit": 3,
+      "question_limit": 1,
       "question_avg": 3.0,
       "complexity": 81
     }
@@ -63,93 +63,79 @@
     "submissions/public/hard/20240917_230605_tmorgan7192_strategy.py": {
       "author": "tmorgan7192",
       "accepted_on": "20240917_230605",
-      "question_limit": 7,
+      "question_limit": 2,
       "question_avg": 7.0,
       "complexity": 432
     },
     "submissions/public/hard/20240918_142447_bryker_strategy.py": {
       "author": "bryker",
       "accepted_on": "20240918_142447",
-      "question_limit": 6,
+      "question_limit": 1,
       "question_avg": 6.0,
       "complexity": 420
-    },
-    "submissions/public/hard/20240918_223032_submit_hard.py": {
-      "author": "rocket3989",
-      "accepted_on": "20240918_223032",
-      "question_limit": 10,
-      "question_avg": 6.210016835016835,
-      "complexity": 1160
     },
     "submissions/public/hard/20240918_223240_hard_strat_bryker_optimised.py": {
       "author": "Rrst1 + bryker",
       "accepted_on": "20240918_223240",
-      "question_limit": 6,
+      "question_limit": 2,
       "question_avg": 5.5,
       "complexity": 454
     },
     "submissions/public/hard/20240919_040726_jix_sat_synthesized.py": {
       "author": "jix",
       "accepted_on": "20240919_040726",
-      "question_limit": 5,
+      "question_limit": 2,
       "question_avg": 5.0,
-      "complexity": 46800
+      "complexity": 46803
     },
     "submissions/public/hard/20240920_210459_optim_hard.py": {
       "author": "oliverweissl + Rrst1 + bryker",
       "accepted_on": "20240920_210459",
-      "question_limit": 6,
+      "question_limit": 2,
       "question_avg": 5.5,
       "complexity": 347
     },
     "submissions/public/hard/20240921_154610_jix_sat_pruned.py": {
       "author": "viliml",
       "accepted_on": "20240921_154610",
-      "question_limit": 5,
-      "question_avg": 4.936838624338624,
+      "question_limit": 2,
+      "question_avg": 4.945216049382716,
       "complexity": 45172
     },
     "submissions/public/hard/20240921_214752_viliml_sat_synthesized.py": {
       "author": "viliml",
       "accepted_on": "20240921_214752",
-      "question_limit": 5,
-      "question_avg": 4.725198412698413,
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
       "complexity": 176165
-    },
-    "submissions/public/hard/20241002_024613_itr.py": {
-      "author": "ITR13",
-      "accepted_on": "20241002_024613",
-      "question_limit": 6,
-      "question_avg": 5.174603174603175,
-      "complexity": 1575
     },
     "submissions/public/hard/20241013_113416_ganitsu_simple_sat.py": {
       "author": "ganitsu",
       "accepted_on": "20241013_113416",
-      "question_limit": 5,
-      "question_avg": 4.725198412698413,
-      "complexity": 6117
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
+      "complexity": 6066
     },
     "submissions/public/hard/20241015_010940_viliml_simpler_sat.py": {
       "author": "viliml",
       "accepted_on": "20241015_010940",
-      "question_limit": 5,
-      "question_avg": 4.725198412698413,
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
       "complexity": 9638
     },
     "submissions/public/hard/20241017_005733_ganitsu_simplest_sat.py": {
       "author": "ganitsu",
       "accepted_on": "20241017_005733",
-      "question_limit": 5,
-      "question_avg": 4.725198412698413,
-      "complexity": 27955
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
+      "complexity": 27968
     },
     "submissions/public/hard/20241020_144430_ganitsu_joke_simplified.py": {
       "author": "ITR13",
       "accepted_on": "20241020_144430",
-      "question_limit": 5,
-      "question_avg": 4.725198412698413,
-      "complexity": 19749
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
+      "complexity": 23155
     }
   }
 }

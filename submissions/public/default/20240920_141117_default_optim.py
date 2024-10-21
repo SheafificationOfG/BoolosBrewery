@@ -3,7 +3,7 @@ from strats import *
 
 class Strategy(Default):
     # This solution is based on vzsky`s approach, im simply trying to lower complexity score.
-    question_limit = 3
+    engg_question_limit = 1
 
 
     def solve(self):

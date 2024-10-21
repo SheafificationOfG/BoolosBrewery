@@ -38,12 +38,12 @@ def process_single_submission(file: str|None, publish=False, author=None, summar
     submission = scoring.runner.Submission(submission_file)
 
     print("Puzzle variant:", submission.get_difficulty())
-    print("Question limit:", submission.get_question_limit())
+    print("Engineer question limit:", submission.get_engg_question_limit())
 
     print("Running submission...")
     q_avg = submission.get_question_average()
     cplx = submission.get_complexity()
-    scoring.scoreboard.summary(summary, submission.get_difficulty(), q_avg, cplx, f"Question limit: {submission.get_question_limit()}")
+    scoring.scoreboard.summary(summary, submission.get_difficulty(), q_avg, cplx, f"Engineer question limit: {submission.get_engg_question_limit()}")
 
     print("Submission passed all test cases!")
     print("Average question count:", q_avg)

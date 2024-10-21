@@ -56,7 +56,7 @@ class Submission:
         if accepted is not None:
             entry[KEYS.ACCEPTED] = accepted
         
-        entry[KEYS.Q_LIMIT] = self.get_question_limit()
+        entry[KEYS.Q_LIMIT] = self.get_engg_question_limit()
         entry[KEYS.Q_AVG] = self.get_question_average(recompute=recompute_q_avg)
         entry[KEYS.CPLX] = self.get_complexity(recompute=recompute_cplx)
 
@@ -64,12 +64,12 @@ class Submission:
     def get_difficulty(self) -> str:
         return self._strategy.get_difficulty()
     
-    def get_question_limit(self) -> int:
-        return self._strategy.get_question_limit()
+    def get_engg_question_limit(self) -> int:
+        return self._strategy.get_engg_question_limit()
     
     def get_question_average(self, *, recompute=False) -> float:
         if recompute or not hasattr(self, "_q_avg"):
-            print("Running strategy...")
+            print(f"Running strategy {self._fullpath}...")
             self._q_avg = self._strategy.test_all_cases()
 
             print("All scenarios passed!")

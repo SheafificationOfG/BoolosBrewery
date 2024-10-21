@@ -1,7 +1,7 @@
 from strats import *
 
 class Strategy(Default):
-    question_limit = 3
+    engg_question_limit = 1
 
     # Ask will always return truthfully if the person is either a mathematician or a physicist.
     def ask (self, Person, stmt): 

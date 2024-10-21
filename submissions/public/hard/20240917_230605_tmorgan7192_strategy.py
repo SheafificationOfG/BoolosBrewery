@@ -1,7 +1,7 @@
 from strats import *
 
 class Strategy(Hard):
-    question_limit = 7
+    engg_question_limit = 2
 
     def solve(game):
         people = [Alice, Bob, Charlie, Dan]

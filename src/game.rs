@@ -10,6 +10,9 @@ use colored::Colorize;
 #[cfg(feature = "test-strategy")]
 use itertools::Itertools;
 
+#[cfg(feature = "test-strategy")]
+use std::iter::repeat;
+
 #[cfg(all(feature = "easy", feature = "hard"))]
 compile_error!("Cannot simultaneously enable \"easy\" and \"hard\" mode!");
 
@@ -162,7 +165,7 @@ impl Context {
     }
 
     #[cfg(feature = "test-strategy")]
-    pub fn permutations(question_limit: usize) -> Vec<Self> {
+    pub fn permutations(engg_question_limit: usize) -> Vec<Self> {
         use Field::*;
         let mut cases = Vec::<Self>::new();
         for field_assignment in [Mathematics, Physics, Engineering, Philosophy]
@@ -171,7 +174,7 @@ impl Context {
             .cloned()
             .permutations(NUM_PEOPLE)
         {
-            for word_assignment in WordAssignment::permutations(question_limit) {
+            for word_assignment in WordAssignment::permutations(engg_question_limit) {
                 cases.push(Self {
                     field_assignment: field_assignment.to_vec(),
                     word_assignment,
@@ -292,8 +295,16 @@ impl Context {
     #[cfg(feature = "test-strategy")]
     fn response_of(&self, person: &Person, expr: bool) -> Option<ResponseConst> {
         self.field_of(person).map(|field| {
-            self.word_assignment
-                .scripted_response_of(field, expr, self.history.len())
+            self.word_assignment.scripted_response_of(
+                field,
+                expr,
+                self.history
+                    .iter()
+                    .filter(|(question, _)| {
+                        self.field_of(&question.person) == Some(&Field::Engineering)
+                    })
+                    .count(),
+            )
         })
     }
 
@@ -415,17 +426,15 @@ impl WordAssignment {
             .cloned()
             .permutations(NUM_WORDS)
         {
-            for engg_script in [Foo, Bar, Baz]
-                .iter()
-                .take(NUM_WORDS)
-                .cloned()
-                .combinations_with_replacement(question_limit)
+            for engg_script in repeat([Foo, Bar, Baz].into_iter().take(NUM_WORDS))
+                .take(question_limit)
+                .multi_cartesian_product()
             {
                 perms.push(Self {
                     yes: word_perm[0],
                     no: word_perm[1],
                     idk: *word_perm.get(2).unwrap_or(&Baz),
-                    engg_script,
+                    engg_script: engg_script,
                 })
             }
         }
@@ -470,7 +479,7 @@ impl WordAssignment {
     #[cfg(feature = "test-strategy")]
     fn scripted_response_of(&self, field: &Field, expr: bool, index: usize) -> ResponseConst {
         match field {
-            Field::Engineering => self.engg_script[index],
+            Field::Engineering => *self.engg_script.get(index).expect("The number of questions directed to the engineer must be less than the upper bound provided!"),
             _ => self.response_of(field, expr),
         }
     }

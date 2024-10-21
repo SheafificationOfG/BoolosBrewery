@@ -24,6 +24,10 @@ Cargo.lock
 
 /target
 
+# editors
+.vscode
+*.swp
+
 # Python files
 __pycache__/
 *.py[cod]

@@ -1,7 +1,7 @@
 from strats import *
 
 class Strategy(Hard):
-    question_limit = 6
+    engg_question_limit = 1
 
     def solve(game):
         # First we will ask each person the same question

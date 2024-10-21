@@ -2,8 +2,7 @@ from strats import Alice, Bob, Math, Phys, Foo
 from strats.strategy import Easy
 
 class Strategy(Easy):
-    question_limit = 1
-
+    engg_question_limit = 0
 
     def solve(game):
 

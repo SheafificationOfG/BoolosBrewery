@@ -292,8 +292,6 @@ for k, dat in data.items():
 		}
 
 
-cantidad_de_preguntas = 5
-
 respuestas_list = [
 	"Foo",
 	"Bar",
@@ -372,23 +370,19 @@ def is_nodo_leaf(value):
 index_problema = 0
 
 class Strategy(Hard):
-	question_limit = cantidad_de_preguntas
+	engg_question_limit = 2
 	
 	def solve(self):
 		global index_problema
 		
 		nodo_actual = 1
 		index_problema += 1
-		
-		print(f"------RESOLVIENDO PROBLEMA {index_problema}-------------")
-		
+				
 		while True:
 		
-			# print(f"En nodo {nodo_actual}, es leaf: {is_nodo_leaf(nodo_actual)}")
 			if not is_nodo_leaf(nodo_actual):
 				asker, question = get_question(nodo_actual)
 				asker = game_personas_list[asker]
-				# print(f"Hice pregunta a {asker}")
 				
 				respuesta = self.get_response(asker.ask(Expr(question)))
 				respuesta = game_responses_list.index(respuesta)
@@ -398,7 +392,6 @@ class Strategy(Hard):
 			
 			else:
 				orden_de_fields = get_answer(nodo_actual)
-				# print("orden fields ", orden_de_fields)
 				for i, g in enumerate(personas_list):
 					self.guess[game_personas_list[i]] = game_fields_list[orden_de_fields[i]]
 				

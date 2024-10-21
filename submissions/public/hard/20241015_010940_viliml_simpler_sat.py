@@ -78,7 +78,7 @@ def get_question(node):
 
 
 class Strategy(Hard):
-    question_limit = 5
+    engg_question_limit = 2
 
     def solve(self):
         nodo_actual = 1

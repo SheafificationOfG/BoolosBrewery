@@ -10,10 +10,10 @@ class _StrategyBase:
         raise NotImplementedError
     
     @classmethod
-    def get_question_limit(cls) -> int:
-        if not hasattr(cls, "question_limit") or not isinstance(cls.question_limit, int) or cls.question_limit <= 0:
-            raise NotImplementedError(f"Strategy must specify a positivevalue for `{cls.__name__}.question_limit`.")
-        return cls.question_limit
+    def get_engg_question_limit(cls) -> int:
+        if not hasattr(cls, "engg_question_limit") or not isinstance(cls.engg_question_limit, int) or cls.engg_question_limit < 0:
+            raise NotImplementedError(f"Strategy must specify a nonnegative value for `{cls.__name__}.engg_question_limit`.")
+        return cls.engg_question_limit
 
     def __init__(self):
         features = ["test-strategy"]
@@ -27,7 +27,7 @@ class _StrategyBase:
             case other:
                 raise ValueError(f"Unexpected difficulty: {other}")
         
-        self._instance = GameInstance(features=features, num_questions=self.get_question_limit())
+        self._instance = GameInstance(features=features, num_questions=self.get_engg_question_limit())
         self._guess: types.Guesses = None
     
     def solve(self):

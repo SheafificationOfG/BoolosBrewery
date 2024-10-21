@@ -88,10 +88,7 @@ class GameInstance:
     def ask(self, question: types.Question) -> types.Response:
         if not isinstance(question, types.Question):
             raise ValueError("You can only ask questions!")
-        
-        if self._question_counter >= self._num_questions:
-            raise AssertionError(f"You have already asked your limit of {self._num_questions} question(s)!")
-        
+                
         self._question_counter += 1
         self._writeln(question)
         self._log(f"You: {question}")

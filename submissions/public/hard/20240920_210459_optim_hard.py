@@ -2,7 +2,7 @@ from strats import *
 
 
 class Strategy(Hard):
-    question_limit = 6
+    engg_question_limit = 2
 
     def solve(self):
         # This submission is based on Rrst1 + bryker`s solution. I`m just trying to reduce complexity score :).

@@ -30,12 +30,12 @@ class Strategy(Easy):
     The target puzzle variant is specified by deriving from "Easy" (as shown above), "Default", or "Hard".
     """
 
-    question_limit = 4
+    engg_question_limit = 0
     """
-    Your strategy *must* specify an upper bound for how many questions it will ask.
+    Your strategy *must* specify an upper bound for how many questions it may ask *the engineer*.
     You will automatically fail if you ask more questions than the limit you specify.
     However, you may ask fewer questions than your allocated limit.
-    Our strategy uses exactly four questinos in all cases.
+    For easy-mode submissions, you will *never* ask the engineer anything, so we can leave it at zero.
     """
 
     def solve(game):
@@ -49,9 +49,11 @@ class Strategy(Easy):
 > I just picked `game` because I think it's more telling in this case.
 
 > [!TIP]
-> The `question_limit` needs only to be an *upper bound*.
+> The `engg_question_limit` needs only to be an *upper bound*.
 > This value is used so that the game can generate all possible response sequences of the engineer.
 > Since the number of possible response sequences grows *exponentially* with the number of questions, try to keep the question limit reasonable (otherwise, your submission will time out).
+>
+> In the solution to the default puzzle provided by the video, we only ever ask the engineer *one* question (out of the three total), so such a strategy would set `engg_question_limit = 1`.
 
 Now, let's go about implementing our strategy.
 
@@ -242,7 +244,7 @@ Submissions are sorted first by the **average number of questions** required to 
 For submissions that solve the puzzle in the same average number of questions, they are then sorted based on **minimal "complexity"**.
 What is complexity?
 Well, it roughly corresponds to the size of the [abstract syntax tree](https://en.wikipedia.org/wiki/Abstract_syntax_tree) of your solution.
-In simpler terms, this measures the "size" of the program, but is more refined than basing size on "number of lines" or "file size"; in particular, you are **not** punished for comments, large variable names, etc.
+In simpler terms, this measures the "size" of the program, but is more refined than basing size on "number of lines" or "file size"; in particular, you are **not** punished for comments, large variable names (within reason), etc.
 
 > The purpose of the "complexity" metric is to encourage more submissions, even if you can't beat the current best strictly in terms of number of questions.
 > If you think you have a slicker way of implementing an existing strategy, this is also fair game!

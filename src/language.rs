@@ -104,7 +104,7 @@ impl Syntax for Question {
         })?;
 
         if context.you.is_none() && matches!(person, Person::Mathematician | Person::Physicist | Person::Engineer | Person::Philosopher) {
-            return Err(ParseError::new(src, index, &format!("You don't know who the {} is!", person)));
+            return Err(ParseError::new(src, index, format!("You don't know who the {} is!", person)));
         }
 
         let context = Self::Context { you: Some(person) };
