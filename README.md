@@ -1,6 +1,9 @@
 # *Boolos' Brewery*
 
 Try your hand at the logic puzzle(s) presented in the video [Solving one of the logic puzzles of all time](https://www.youtube.com/watch?v=uUPr07ThSH0)!
+
+[![Solving one of the logic puzzles of all time](https://img.youtube.com/vi/uUPr07ThSH0/0.jpg)](https://youtu.be/uUPr07ThSH0)
+
 While you don't *technically* need to watch the video, it probably helps to.
 
 1. [The main predicament](#the-main-predicament)
