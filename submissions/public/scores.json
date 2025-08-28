@@ -136,6 +136,13 @@
       "question_limit": 2,
       "question_avg": 4.746141975308642,
       "complexity": 23155
+    },
+    "submissions/public/hard/20250828_023728_ganitsu_optim.py": {
+      "author": "oliverweissl",
+      "accepted_on": "20250828_023728",
+      "question_limit": 2,
+      "question_avg": 4.746141975308642,
+      "complexity": 4045
     }
   }
 }
