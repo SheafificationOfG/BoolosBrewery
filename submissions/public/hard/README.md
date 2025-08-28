@@ -2,7 +2,7 @@
 
 | Place | Strategy | Author | Questions | Complexity | Source |
 |:-----:|:--------:|:------:|:---------:|:----------:|:------:|
-| :1st_place_medal: | `ganitsu_optim` | **oliverweissl** | 4.74614 | 4,045 | `20250828_023728_ganitsu_optim.py` |
+| :1st_place_medal: | `ganitsu_optim` | **oliverweissl + ganitsu** | 4.74614 | 4,045 | `20250828_023728_ganitsu_optim.py` |
 | :2nd_place_medal: | `ganitsu_simple_sat` | **ganitsu** | 4.74614 | 6,066 | `20241013_113416_ganitsu_simple_sat.py` |
 | :3rd_place_medal: | `viliml_simpler_sat` | **viliml** | 4.74614 | 9,638 | `20241015_010940_viliml_simpler_sat.py` |
 | 4 | `ganitsu_joke_simplified` | ITR13 | 4.74614 | 23,155 | `20241020_144430_ganitsu_joke_simplified.py` |
