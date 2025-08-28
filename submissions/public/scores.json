@@ -57,6 +57,13 @@
       "question_limit": 1,
       "question_avg": 3.0,
       "complexity": 81
+    },
+    "submissions/public/default/20250828_023828_itr_minimal.py": {
+      "author": "oliverweissl",
+      "accepted_on": "20250828_023828",
+      "question_limit": 1,
+      "question_avg": 3.0,
+      "complexity": 72
     }
   },
   "hard": {
